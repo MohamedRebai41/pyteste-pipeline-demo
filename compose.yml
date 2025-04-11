@@ -10,7 +10,9 @@ services:
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-    environment:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker:ro
+    environment:  
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
     networks:
       - jenkins_network
